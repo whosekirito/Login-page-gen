@@ -1,0 +1,12 @@
+
+services:
+  - type: web
+    name: login-page-generator
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
