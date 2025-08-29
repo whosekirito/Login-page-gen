@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Log In or Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.34;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .content {
+            display: flex;
+            max-width: 980px;
+            width: 100%;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .left-section {
+            flex: 1;
+            padding-right: 32px;
+        }
+        
+        .logo {
+            font-size: 60px;
+            font-weight: bold;
+            color: #1877f2;
+            margin-bottom: 16px;
+            font-family: 'Klavika', sans-serif;
+        }
+        
+        .tagline {
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 32px;
+        }
+        
+        .right-section {
+            flex: 1;
+            max-width: 396px;
+        }
+        
+        .login-box {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            padding: 20px;
+            margin-bottom: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            background: #f5f6f7;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .form-input:focus {
+            border-color: #1877f2;
+            background: white;
+        }
+        
+        .login-btn {
+            width: 100%;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 12px 16px;
+            cursor: pointer;
+            margin-bottom: 16px;
+            transition: background-color 0.2s;
+        }
+        
+        .login-btn:hover {
+            background: #166fe5;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .forgot-password a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #dadde1;
+        }
+        
+        .divider span {
+            background: white;
+            padding: 0 20px;
+            color: #8a8d91;
+            font-size: 14px;
+        }
+        
+        .create-account-btn {
+            background: #42b883;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px 24px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: background-color 0.2s;
+        }
+        
+        .create-account-btn:hover {
+            background: #36a870;
+        }
+        
+        .create-page {
+            text-align: center;
+            margin-top: 28px;
+        }
+        
+        .create-page a {
+            color: #1c1e21;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .create-page a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 899px) {
+            .content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .left-section {
+                padding-right: 0;
+            }
+            
+            .logo {
+                font-size: 48px;
+            }
+            
+            .tagline {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            
+            .right-section {
+                max-width: 100%;
+                width: 100%;
+                max-width: 396px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .logo {
+                font-size: 36px;
+            }
+            
+            .tagline {
+                font-size: 20px;
+                line-height: 24px;
+            }
+            
+            .login-box {
+                padding: 16px;
+                margin-bottom: 20px;
+            }
+            
+            .form-input {
+                padding: 12px 14px;
+                font-size: 16px;
+            }
+            
+            .login-btn {
+                font-size: 18px;
+                padding: 10px 14px;
+            }
+            
+            .create-account-btn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+        
+        .message {
+            display: none;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="left-section">
+                <div class="logo">facebook</div>
+                <div class="tagline">Facebook helps you connect and share with the people in your life.</div>
+            </div>
+            
+            <div class="right-section">
+                <div class="login-box">
+                    <div id="message" class="message"></div>
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <input type="text" id="email" name="email" class="form-input" placeholder="Email address or phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="password" class="form-input" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="login-btn">Log in</button>
+                    </form>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Forgotten password?</a>
+                    </div>
+                    
+                    <div class="divider">
+                        <span>or</span>
+                    </div>
+                    
+                    <button class="create-account-btn">Create new account</button>
+                </div>
+                
+                <div class="create-page">
+                    <a href="#"><strong>Create a Page</strong> for a celebrity, brand or business.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
