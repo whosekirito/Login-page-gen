@@ -10,3 +10,6 @@ services:
         value: production
       - key: PORT
         generateValue: true
+      - key: BASE_URL
+        value: https://login-page-gen.onrender.com
+        
