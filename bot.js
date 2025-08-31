@@ -41,7 +41,7 @@ Type /create to begin creating your login page!
 /create - Create a new login page
 /help - Get detailed help
 
-⚠️ *Disclaimer:* For authorized security testing only!
+⚠️ *Disclaimer:* Use At Your own Responsibility....
 
 👨‍💻 *Developer:* @Whosekirito
             `;
